@@ -1,0 +1,16 @@
+{
+  "name": "asegurada-de-comunidades",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "npm --workspace @asegurada/web run dev",
+    "dev:api": "npm --workspace @asegurada/api run start:dev",
+    "build": "npm run -ws build",
+    "lint": "npm run -ws lint",
+    "format": "npm run -ws format"
+  }
+}
