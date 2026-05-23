@@ -1,0 +1,18 @@
+{
+  "name": "@asegurada/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "echo 'format web'"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "@asegurada/ui": "0.1.0"
+  }
+}
