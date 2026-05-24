@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 178" width="600" height="178">
+<polygon points="27,5 573,5 595,27 595,151 573,173 27,173 5,151 5,27" fill="none" stroke="#1499F0" stroke-width="3"/>
+<polygon points="32,11 568,11 589,31 589,147 568,167 32,167 11,147 11,31" fill="none" stroke="#9BD6F9" stroke-width="1.1"/>
+<g transform="translate(78,86) scale(1.28)"><path d="M0,-26 C12,-12 16,-4 14,6 C12,15 5,20 0,20 C-5,20 -12,15 -14,6 C-16,-4 -12,-12 0,-26 Z" fill="#FF5436"/><path d="M0,-9 C5,-3 7,1 6,6 C5,11 2,13 0,13 C-2,13 -5,11 -6,6 C-7,1 -5,-3 0,-9 Z" fill="#FFFFFF"/></g>
+<g transform="translate(522,86) scale(1.22)"><path d="M0,-24 C10,-8 16,0 16,8 C16,17 9,23 0,23 C-9,23 -16,17 -16,8 C-16,0 -10,-8 0,-24 Z" fill="#1499F0"/><path d="M0,-6 C4,0 7,4 7,8 C7,13 4,15 0,15 C-4,15 -7,13 -7,8 C-7,4 -4,0 0,-6 Z" fill="#FFFFFF"/></g>
+<text x="300" y="80" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="44" font-weight="800" letter-spacing="0.5" fill="#1499F0">COMUNIDAD</text>
+<text x="300" y="128" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="6" fill="#1499F0">ASEGURADA</text>
+</svg>
