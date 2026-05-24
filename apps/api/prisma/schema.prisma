@@ -20,55 +20,99 @@ enum CompaniaEstado {
   destacada
 }
 
+enum TipoSiniestro {
+  agua
+  incendio
+  RC
+  cristales
+  otros
+}
+
+enum OrigenLead {
+  web
+  finka
+}
+
 model Usuario {
-  id             String      @id @default(cuid())
-  nombre         String
-  email          String      @unique
-  telefono       String?
-  rol            Role
+  id              String      @id @default(cuid())
+  nombre          String
+  email           String      @unique
+  telefono        String?
+  rol             Role
   consentimientos Json?
-  comunidades    Comunidad[] @relation("AdministradorComunidades")
-  leads          Lead[]
-  createdAt      DateTime    @default(now())
+  origenFinka     Boolean     @default(false)
+  comunidades     Comunidad[] @relation("AdministradorComunidades")
+  leads           Lead[]
+  createdAt       DateTime    @default(now())
 }
 
 model Comunidad {
-  id              String        @id @default(cuid())
-  direccion       String
-  catastro        String?
-  codigoPostal    String?
-  anio            Int?
-  numeroViviendas Int?
-  metrosCuadrados Float?
-  caracteristicas Json?
-  administradorId String?
-  administrador   Usuario?      @relation("AdministradorComunidades", fields: [administradorId], references: [id])
-  polizas         Poliza[]
-  diagnosticos    Diagnostico[]
+  id                String            @id @default(cuid())
+  direccion         String
+  catastro          String?
+  codigoPostal      String?
+  poblacion         String?
+  anio              Int?
+  numeroViviendas   Int?
+  numeroPlantas     Int?
+  metrosCuadrados   Float?
+  caracteristicas   Json?
+  administradorId   String?
+  administrador     Usuario?          @relation("AdministradorComunidades", fields: [administradorId], references: [id])
+  polizas           Poliza[]
+  diagnosticos      Diagnostico[]
+  siniestros        Siniestro[]
+  portalPresidente  PortalPresidente?
 }
 
 model Poliza {
-  id                 String    @id @default(cuid())
+  id                 String      @id @default(cuid())
   compania           String
   capitales          Json?
   coberturas         Json?
   vencimiento        DateTime?
   pdfUrl             String?
   comunidadId        String
-  comunidad          Comunidad @relation(fields: [comunidadId], references: [id])
+  comunidad          Comunidad   @relation(fields: [comunidadId], references: [id])
   companiaRelacionId String?
-  companiaRelacion   Compania? @relation(fields: [companiaRelacionId], references: [id])
+  companiaRelacion   Compania?   @relation(fields: [companiaRelacionId], references: [id])
+  siniestros         Siniestro[]
 }
 
 model Diagnostico {
-  id          String    @id @default(cuid())
-  fecha       DateTime  @default(now())
-  score       Int
-  alertas     Json?
-  informe     Json?
-  comunidadId String
-  comunidad   Comunidad @relation(fields: [comunidadId], references: [id])
-  lead        Lead?
+  id                String    @id @default(cuid())
+  fecha             DateTime  @default(now())
+  score             Int
+  alertas           Json?
+  informe           Json?
+  consentimientoRgpd Boolean
+  comunidadId       String
+  comunidad         Comunidad @relation(fields: [comunidadId], references: [id])
+  lead              Lead?
+}
+
+model Siniestro {
+  id            String        @id @default(cuid())
+  tipo          TipoSiniestro
+  estado        String
+  fechaApertura DateTime      @default(now())
+  descripcion   String
+  documentos    Json?
+  urgencia      String
+  ruta          String
+  comunidadId   String
+  polizaId      String
+  comunidad     Comunidad     @relation(fields: [comunidadId], references: [id])
+  poliza        Poliza        @relation(fields: [polizaId], references: [id])
+}
+
+model PortalPresidente {
+  id                        String    @id @default(cuid())
+  enlaceSeguro              String
+  coberturasLenguajeClaro   Json
+  contactosUrgencia         Json
+  comunidadId               String    @unique
+  comunidad                 Comunidad @relation(fields: [comunidadId], references: [id])
 }
 
 model Compania {
@@ -99,6 +143,7 @@ model Lead {
   estado          String
   asesorAsignado  String?
   seguimiento     Json?
+  origen          OrigenLead  @default(web)
   diagnosticoId   String      @unique
   diagnostico     Diagnostico @relation(fields: [diagnosticoId], references: [id])
   usuarioId       String
