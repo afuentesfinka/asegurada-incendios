@@ -1,0 +1,1 @@
+export default function Page(){return <main className="container"><h1>Qué cubre tu seguro</h1><p>Daños por agua, continente vs contenido, RC, infraseguro y regla proporcional en lenguaje claro.</p></main>}
