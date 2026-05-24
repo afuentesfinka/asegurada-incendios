@@ -1,2 +1,21 @@
 import Link from 'next/link';
-export default function Page(){return <main className="container"><h1>Para propietarios</h1><p>Entiende en lenguaje claro qué cubre y qué no cubre el seguro de tu comunidad.</p><div style={{display:'flex',gap:12}}><Link href="/diagnostico" className="cta">Hacer diagnóstico</Link><Link href="/consultor-ia" className="card">Hablar con consultor IA</Link></div></main>}
+import { Shell, SiteFooter, SiteHeader } from '../components';
+
+export default function Page() {
+  return (
+    <>
+      <SiteHeader />
+      <Shell>
+        <section className="hero-simple">
+          <h1>Propietarios: entiende qué cubre tu seguro comunitario</h1>
+          <p className="lead">Te explicamos en lenguaje claro coberturas, límites y exclusiones para que participes con criterio en las decisiones de tu comunidad.</p>
+          <div className="cta-row">
+            <Link href="/consultor-ia" className="btn btn-light">Hablar con consultor</Link>
+            <Link href="/diagnostico" className="btn btn-primary">Ir al diagnóstico</Link>
+          </div>
+        </section>
+      </Shell>
+      <SiteFooter />
+    </>
+  );
+}
